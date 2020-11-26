@@ -10,6 +10,7 @@
 # Создайте файл при помощи команды cat > file_name, напишите текст и завершите комбинацией ctrl+d.
 # Какой сигнал передадим процессу?
 
+
 vagrant@homestead:~/gb_linux$ sudo vi /etc/ssh/sshd_config
 vagrant@homestead:~/gb_linux$ cat /etc/ssh/sshd_config | grep PasswordAuthentication
 PasswordAuthentication no
@@ -72,3 +73,13 @@ Nov 26 20:19:23 homestead systemd[1]: Reloaded OpenBSD Secure Shell server.
 Nov 26 20:19:23 homestead sshd[2778]: Server listening on 0.0.0.0 port 22.
 Nov 26 20:19:23 homestead sshd[2778]: Server listening on :: port 22.
 
+vagrant@homestead:~/gb_linux$ cat > infile.txt
+Welcome!
+vagrant@homestead:~/gb_linux$ ls
+cat.err  infile.txt  welcome.txt
+vagrant@homestead:~/gb_linux$ cat infile.txt
+Welcome!
+vagrant@homestead:~/gb_linux$
+
+# сочетание Ctrl-D передает в оболочку сигнал EOT (конец передачи). В свою очередь сигнал инициирует
+# закрытие файла (EOF) и выход из программы
